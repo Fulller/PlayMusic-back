@@ -4,11 +4,14 @@ const morgan = require("morgan");
 const route = require("./routes");
 const cors = require("cors");
 const multer = require("multer");
+const db = require("./config/db");
+
+db.connect();
 
 const app = express();
 app.use(express.static("./public"));
 app.use(cors({ origin: true }));
-const port = 3003;
+const port = 3006;
 app.use(
   express.urlencoded({
     extended: true,
@@ -35,5 +38,5 @@ route(app);
 //   res.json(pathIamge);
 // });
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Running on port ${port}`);
 });
